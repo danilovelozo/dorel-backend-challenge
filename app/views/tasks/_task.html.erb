@@ -9,9 +9,9 @@
                        class: "mr-2 align-middle bg-gray-50 border-gray-300 focus:ring-3 focus:ring-blue-300 h-5 w-5 rounded checked:bg-green-500",
                        readonly: true %>
       <%= task.title %>
-      <li><b>Description:</b> <%= task.description %></li>
-      <li><b>Start Date:</b> <%= task.start_date.strftime("%d/%m/%Y") %></li>
-      <li><b>End Date:</b> <%= task.end_date.strftime("%d/%m/%Y") %></li>
+      <li><b>Description:</b> <%= task&.description %></li>
+      <li><b>Start Date:</b> <%= task&.start_date&.strftime("%d/%m/%Y") %></li>
+      <li><b>End Date:</b> <%= task&.end_date&.strftime("%d/%m/%Y") %></li>
     </ul>
     <% end %>
 
@@ -21,7 +21,7 @@
     %>
   </div>
   <div class="inline-block ml-2">
-    <%= link_to "Delete", task_path(task),
+    <%= button_to "Delete", task_path(task),
                   method: :delete,
                   data: { action: "tasks#delete" },
                   class: "text-gray-900 bg-white border border-gray-300 focus:outline-none hover:bg-gray-100 focus:ring-4 focus:ring-gray-200 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2 dark:bg-gray-800 dark:text-white dark:border-gray-600 dark:hover:bg-gray-700 dark:hover:border-gray-600 dark:focus:ring-gray-7000" %>
