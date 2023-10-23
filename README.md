@@ -1,24 +1,33 @@
-# README
+# Dorel - Backend Challenge
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+## Tools
+- Ruby 3.2.2
+- Rails 7.0.8
+- PostgreSQL 14
 
-Things you may want to cover:
+## Setup
+- Run the following commands:
 
-* Ruby version
+```
+cd dorel-backend-challenge
+bundle install
+rails db:setup
+rails s
+```
 
-* System dependencies
+## API Documentation
+- https://apidog.com/apidoc/shared-c3b801ee-2145-41d7-8fb3-6132e30b0237/api-4499442
 
-* Configuration
+## Production URL
+- https://dorel.onrender.com/
 
-* Database creation
+## Default Login
+- email: test@test.com
+- password: 12345678
 
-* Database initialization
+## Tests
+- Run the following command:
 
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+```
+rspec
+```
