@@ -6,4 +6,12 @@ Rails.application.routes.draw do
   resources :tasks
 
   post "tasks/:id/toggle", to: "tasks#toggle"
+
+  namespace :api, defaults: { format: :json } do
+    post '/auth/login', to: 'authentication#login'
+
+    namespace :v1 do
+      resources :tasks
+    end
+  end
 end

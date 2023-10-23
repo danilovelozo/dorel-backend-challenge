@@ -1,5 +1,6 @@
 class TasksController < ApplicationController
   before_action :authenticate_user!
+  before_action :set_task, only: [:edit, :update, :toggle, :destroy]
 
   def index
     @tasks = current_user.tasks
@@ -18,13 +19,9 @@ class TasksController < ApplicationController
     end
   end
 
-  def edit
-    @task = current_user.tasks.find(params[:id])
-  end
+  def edit; end
 
   def update
-    @task = current_user.tasks.find(params[:id])
-
     respond_to do |format|
       if @task.update(task_params)
         format.html { redirect_to tasks_url, notice: "Task was successfully updated" }
@@ -35,20 +32,22 @@ class TasksController < ApplicationController
   end
 
   def destroy
-    @task = current_user.tasks.find_by(id: params[:id])
     @task.destroy
 
     redirect_to tasks_url, notice: "Task was successfully deleted."
   end
 
   def toggle
-    @task = current_user.tasks.find(params[:id])
     @task.update(completed: params[:completed])
 
     render json: { message: "Task Updated!" }
   end
 
   private
+
+  def set_task
+    @task = current_user.tasks.find(params[:id])
+  end
 
   def task_params
     params.require(:task).permit(:title, :description, :start_date, :end_date, :completed)
