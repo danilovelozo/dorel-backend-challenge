@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class Api::AuthenticationController < Api::ApiController
   before_action :authorize_request, except: :login
 
@@ -8,10 +10,10 @@ class Api::AuthenticationController < Api::ApiController
       sign_in(@user)
       token = JsonWebToken.encode(user_id: @user.id)
       time = Time.now + 24.hours.to_i
-      render json: { token: token, exp: time.strftime("%m-%d-%Y %H:%M"),
-                     email: @user.email }, status: :ok
+      render json: {token: token, exp: time.strftime("%m-%d-%Y %H:%M"),
+                    email: @user.email}, status: :ok
     else
-      render json: { error: 'unauthorized' }, status: :unauthorized
+      render json: {error: "unauthorized"}, status: :unauthorized
     end
   end
 
@@ -23,7 +25,7 @@ class Api::AuthenticationController < Api::ApiController
 end
 
 class JsonWebToken
-  SECRET_KEY = ENV['JWT_SECRET_KEY']
+  SECRET_KEY = ENV["JWT_SECRET_KEY"]
 
   def self.encode(payload, exp = 24.hours.from_now)
     payload[:exp] = exp.to_i

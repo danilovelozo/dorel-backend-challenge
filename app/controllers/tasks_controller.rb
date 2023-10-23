@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class TasksController < ApplicationController
   before_action :authenticate_user!
   before_action :set_task, only: [:edit, :update, :toggle, :destroy]
@@ -19,7 +21,8 @@ class TasksController < ApplicationController
     end
   end
 
-  def edit; end
+  def edit
+  end
 
   def update
     respond_to do |format|
@@ -40,7 +43,7 @@ class TasksController < ApplicationController
   def toggle
     @task.update(completed: params[:completed])
 
-    render json: { message: "Task Updated!" }
+    render json: {message: "Task Updated!"}
   end
 
   private

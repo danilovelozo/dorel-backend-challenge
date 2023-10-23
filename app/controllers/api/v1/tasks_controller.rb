@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class Api::V1::TasksController < Api::ApiController
   before_action :authorize_request, except: :create
   before_action :set_task, only: [:show, :update, :destroy]

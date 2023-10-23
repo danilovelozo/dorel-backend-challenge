@@ -1,15 +1,15 @@
 # frozen_string_literal: true
 
-require 'spec_helper'
+require "spec_helper"
 
 RSpec.describe UserSerializer do
-  let(:user)  { create :user }
+  let(:user) { create :user }
 
-  describe '#as_json' do
-    it 'serializes a user' do
+  describe "#as_json" do
+    it "serializes a user" do
       expect(described_class.new(user).serializable_hash).to eq(
         data: {
-          id: "#{user.id}",
+          id: user.id.to_s,
           type: :user,
           attributes: {
             email: user.email,
