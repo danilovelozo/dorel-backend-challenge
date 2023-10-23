@@ -17,6 +17,8 @@
 default: &default
   adapter: postgresql
   encoding: unicode
+  username: danilo
+  password: root
   # For details on connection pooling, see Rails configuration guide
   # https://guides.rubyonrails.org/configuring.html#database-pooling
   pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
@@ -81,6 +83,7 @@ test:
 #
 production:
   <<: *default
-  database: dorel_rails_backend_challenge_production
-  username: dorel_rails_backend_challenge
-  password: <%= ENV["DOREL_RAILS_BACKEND_CHALLENGE_DATABASE_PASSWORD"] %>
+  url: <%= ENV['DATABASE_URL'] %>
+  database: dorel_production
+  username: dorel
+  password: <%= ENV['DOREL_DATABASE_PASSWORD'] %>

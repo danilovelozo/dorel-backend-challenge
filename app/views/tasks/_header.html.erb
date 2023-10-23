@@ -3,7 +3,7 @@
       <div class="flex flex-wrap justify-between items-center mx-auto max-w-screen-xl">
           <a href="https://flowbite.com" class="flex items-center">
               <img src="https://i.ibb.co/tQ6Mpt6/Screenshot-2023-10-21-145520.png" class="mr-3 h-6 sm:h-9" alt="Dorel Logo" />&nbsp;
-              <span class="self-center text-xl font-semibold whitespace-nowrap dark:text-black">Welcome, <b><%= current_user.email %></b>&nbsp;|&nbsp; </span>
+              <span class="self-center text-xl font-semibold whitespace-nowrap dark:text-black">Welcome, <b><%= current_user.email %></b></span>
           </a>
           <div class="flex items-center lg:order-2">
               <%= button_to "Logout", destroy_user_session_path, method: :delete %>
